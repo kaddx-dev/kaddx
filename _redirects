@@ -1,0 +1,9 @@
+# Netlify rules that ship inside the build (dist/), so they apply however the site is deployed:
+# drag-and-drop of dist/, `netlify deploy --dir=dist`, or a Git build with any base directory.
+# (netlify.toml is only read on Git builds whose base directory is mobile/.)
+
+# API fallback: only used by builds made with EXPO_PUBLIC_API_URL=/api/v1; the default build calls Render directly
+/api/*  https://kaddx-backend.onrender.com/api/:splat  200!
+
+# Client-side routes (Expo Router single-page output)
+/*      /index.html  200
